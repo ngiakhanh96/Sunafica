@@ -38,26 +38,24 @@
                     <mat-form-field>
                       <mat-label>Menu Code</mat-label>
                       <input matInput formControlName="menuCode" required />
-                      <mat-error *ngIf="form.get('menuCode')!.invalid"
-                        >You must enter a value</mat-error
-                      >
+                      <mat-error *ngIf="form.get('menuCode')!.invalid">
+                        You must enter a value
+                      </mat-error>
                     </mat-form-field>
 
                     <mat-form-field>
                       <mat-label>Menu Name</mat-label>
                       <input matInput formControlName="menuName" required />
-                      <mat-error *ngIf="form.get('menuName')!.invalid"
-                        >You must enter a value</mat-error
-                      >
+                      <mat-error *ngIf="form.get('menuName')!.invalid">
+                        You must enter a value
+                      </mat-error>
                     </mat-form-field>
                   </div>
                   <div class="right-column">
                     <mat-form-field>
                       <mat-label>Description</mat-label>
-                      <textarea
-                        matInput
-                        formControlName="description"
-                      ></textarea>
+                      <textarea matInput formControlName="description">
+                      </textarea>
                     </mat-form-field>
                   </div>
                 </div>
@@ -71,14 +69,12 @@
                         formControlName="startDate"
                         required
                       />
-                      <mat-datepicker-toggle
-                        matSuffix
-                        [for]="startDatePicker"
-                      ></mat-datepicker-toggle>
+                      <mat-datepicker-toggle matSuffix [for]="startDatePicker">
+                      </mat-datepicker-toggle>
                       <mat-datepicker #startDatePicker></mat-datepicker>
-                      <mat-error *ngIf="form.get('startDate')!.invalid"
-                        >You must enter a value</mat-error
-                      >
+                      <mat-error *ngIf="form.get('startDate')!.invalid">
+                        You must enter a value
+                      </mat-error>
                     </mat-form-field>
                   </div>
                   <div class="right-column">
@@ -90,14 +86,12 @@
                         formControlName="endDate"
                         required
                       />
-                      <mat-datepicker-toggle
-                        matSuffix
-                        [for]="endDatePicker"
-                      ></mat-datepicker-toggle>
+                      <mat-datepicker-toggle matSuffix [for]="endDatePicker">
+                      </mat-datepicker-toggle>
                       <mat-datepicker #endDatePicker></mat-datepicker>
-                      <mat-error *ngIf="form.get('endDate')!.invalid"
-                        >You must enter a value</mat-error
-                      >
+                      <mat-error *ngIf="form.get('endDate')!.invalid">
+                        You must enter a value
+                      </mat-error>
                     </mat-form-field>
                   </div>
                 </div>
