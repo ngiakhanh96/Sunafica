@@ -1,13 +1,25 @@
 <div class="container">
   <div class="tab-index">
     <ul>
-      <li>
-        <div (click)="onClickTabIndex(TabIndexName.Information)">
-          Information
-        </div>
+      <li
+        matRipple
+        [matRippleCentered]="false"
+        [matRippleDisabled]="false"
+        [matRippleUnbounded]="false"
+        [class.active]="tabIndexStatus[TabIndexName.Information]"
+        (click)="onClickTabIndex(TabIndexName.Information)"
+      >
+        <div>Information</div>
       </li>
-      <li>
-        <div (click)="onClickTabIndex(TabIndexName.MenuItem)">Menu Item</div>
+      <li
+        matRipple
+        [matRippleCentered]="false"
+        [matRippleDisabled]="false"
+        [matRippleUnbounded]="false"
+        [class.active]="tabIndexStatus[TabIndexName.MenuItem]"
+        (click)="onClickTabIndex(TabIndexName.MenuItem)"
+      >
+        <div>Menu Item</div>
       </li>
     </ul>
   </div>

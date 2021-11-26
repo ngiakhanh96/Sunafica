@@ -8,6 +8,7 @@
     min-width: 200px;
     display: flex;
     flex-direction: column;
+    user-select: none;
 
     ul {
       list-style-type: none;
@@ -34,6 +35,11 @@
         &:hover {
           background-color: #555;
           color: white;
+        }
+
+        &.active {
+          background-color: greenyellow;
+          color: black;
         }
       }
     }

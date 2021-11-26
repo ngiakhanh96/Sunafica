@@ -1,5 +1,5 @@
 import { ViewportScroller } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { dateRangeValidator } from 'src/validators/date-range.validator';
 
@@ -11,6 +11,10 @@ import { dateRangeValidator } from 'src/validators/date-range.validator';
 export class AppComponent {
   TabIndexName: typeof TabIndexName = TabIndexName;
   form: FormGroup;
+  tabIndexStatus: TabIndexStatus = {
+    [TabIndexName.Information]: true,
+    [TabIndexName.MenuItem]: false,
+  };
 
   get menuCode() {
     return this.form.get('menuCode')?.value;
@@ -18,6 +22,19 @@ export class AppComponent {
 
   get menuName() {
     return this.form.get('menuName')?.value;
+  }
+
+  @HostListener('window:scroll') onScroll(): void {
+    if (
+      window.scrollY >=
+      document.getElementById(TabIndexName.Information)!.clientHeight
+    ) {
+      this.tabIndexStatus[TabIndexName.Information] = false;
+      this.tabIndexStatus[TabIndexName.MenuItem] = true;
+    } else {
+      this.tabIndexStatus[TabIndexName.Information] = true;
+      this.tabIndexStatus[TabIndexName.MenuItem] = false;
+    }
   }
 
   constructor(private scroller: ViewportScroller, private fb: FormBuilder) {
@@ -60,3 +77,7 @@ export enum TabIndexName {
   Information = 'information',
   MenuItem = 'menuItem',
 }
+
+declare type TabIndexStatus = {
+  [key in TabIndexName]: boolean;
+};
