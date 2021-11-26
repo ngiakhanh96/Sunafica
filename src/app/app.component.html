@@ -37,7 +37,7 @@
                   <div class="left-column">
                     <mat-form-field>
                       <mat-label>Menu Code</mat-label>
-                      <input matInput formControlName="menuCode" />
+                      <input matInput formControlName="menuCode" required />
                       <mat-error *ngIf="form.get('menuCode')!.invalid"
                         >You must enter a value</mat-error
                       >
@@ -45,7 +45,7 @@
 
                     <mat-form-field>
                       <mat-label>Menu Name</mat-label>
-                      <input matInput formControlName="menuName" />
+                      <input matInput formControlName="menuName" required />
                       <mat-error *ngIf="form.get('menuName')!.invalid"
                         >You must enter a value</mat-error
                       >
@@ -69,6 +69,7 @@
                         matInput
                         [matDatepicker]="startDatePicker"
                         formControlName="startDate"
+                        required
                       />
                       <mat-datepicker-toggle
                         matSuffix
@@ -87,6 +88,7 @@
                         matInput
                         [matDatepicker]="endDatePicker"
                         formControlName="endDate"
+                        required
                       />
                       <mat-datepicker-toggle
                         matSuffix
