@@ -7,8 +7,18 @@ export function dateRangeValidator(): ValidatorFn {
 
     return startDate &&
       endDate &&
-      new Date(startDate.value) > new Date(endDate.value)
+      new Date(startDate.value) < new Date(endDate.value)
       ? null
-      : { invalidDateRange: 'start date must be greater than end date' };
+      : <DateRangeValidationErrors>{
+          invalidDateRange: 'end date must be greater than start date',
+        };
   };
 }
+
+export enum DateRangeError {
+  InvalidDateRange = 'invalidDateRange',
+}
+
+declare type DateRangeValidationErrors = {
+  [key in DateRangeError]: string;
+};

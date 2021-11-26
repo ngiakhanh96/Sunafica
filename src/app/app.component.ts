@@ -1,7 +1,12 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { dateRangeValidator } from 'src/validators/date-range.validator';
+import { TabIndexName } from 'src/enums/tab-index-name.enum';
+import { TabIndexStatus } from 'src/types/tab-index-status.type';
+import {
+  DateRangeError,
+  dateRangeValidator,
+} from 'src/validators/date-range.validator';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +51,9 @@ export class AppComponent {
         startDate: ['', Validators.required],
         endDate: ['', Validators.required],
       },
-      { validators: dateRangeValidator() }
+      {
+        validators: dateRangeValidator(),
+      }
     );
   }
 
@@ -62,22 +69,16 @@ export class AppComponent {
 
   onSubmit(): void {
     if (this.form.invalid) {
-      if (this.form.errors && this.form.errors['invalidDateRange']) {
-        alert(this.form.errors['invalidDateRange']);
+      if (
+        this.form.errors &&
+        this.form.errors[DateRangeError.InvalidDateRange]
+      ) {
+        alert(this.form.errors[DateRangeError.InvalidDateRange]);
       } else {
-        alert('Invalid input');
+        alert('One or more inputs are invalid');
       }
     } else {
       alert('All inputs are valid!');
     }
   }
 }
-
-export enum TabIndexName {
-  Information = 'information',
-  MenuItem = 'menuItem',
-}
-
-declare type TabIndexStatus = {
-  [key in TabIndexName]: boolean;
-};
