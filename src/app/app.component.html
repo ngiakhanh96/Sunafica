@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="tab-index">
+    <ul>
+      <li>
+        <div (click)="onClickTabIndex(TabIndexName.Information)">
+          Information
+        </div>
+      </li>
+      <li>
+        <div (click)="onClickTabIndex(TabIndexName.MenuItem)">Menu Item</div>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div [id]="TabIndexName.Information">
+      <div class="tab-title">
+        <h3>Information</h3>
+      </div>
+      <div class="tab-body">
+        <mat-tab-group>
+          <mat-tab label="General">
+            <div class="tab-group-content">
+              <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="menu">
+                  <div class="left-column">
+                    <mat-form-field>
+                      <mat-label>Menu Code</mat-label>
+                      <input matInput formControlName="menuCode" />
+                      <mat-error *ngIf="form.get('menuCode')!.invalid"
+                        >You must enter a value</mat-error
+                      >
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-label>Menu Name</mat-label>
+                      <input matInput formControlName="menuName" />
+                      <mat-error *ngIf="form.get('menuName')!.invalid"
+                        >You must enter a value</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                  <div class="right-column">
+                    <mat-form-field>
+                      <mat-label>Description</mat-label>
+                      <textarea
+                        matInput
+                        formControlName="description"
+                      ></textarea>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="date">
+                  <div class="left-column">
+                    <mat-form-field>
+                      <mat-label>Start Date</mat-label>
+                      <input
+                        matInput
+                        [matDatepicker]="startDatePicker"
+                        formControlName="startDate"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="startDatePicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #startDatePicker></mat-datepicker>
+                      <mat-error *ngIf="form.get('startDate')!.invalid"
+                        >You must enter a value</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                  <div class="right-column">
+                    <mat-form-field>
+                      <mat-label>End Date</mat-label>
+                      <input
+                        matInput
+                        [matDatepicker]="endDatePicker"
+                        formControlName="endDate"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="endDatePicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #endDatePicker></mat-datepicker>
+                      <mat-error *ngIf="form.get('endDate')!.invalid"
+                        >You must enter a value</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="button-group">
+                  <button mat-flat-button color="primary" type="submit">
+                    Validate
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-tab>
+          <mat-tab label="Extra Information">
+            <div class="tab-group-content">
+              <div>Menu Code: {{ menuCode }}</div>
+              <div>Menu Name: {{ menuName }}</div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div [id]="TabIndexName.MenuItem">
+      <div class="tab-title">
+        <h3>Menu item</h3>
+      </div>
+      <div class="tab-body">
+        <div class="text-holder">Text holder to enable scrolling</div>
+      </div>
+    </div>
+  </div>
+</div>
